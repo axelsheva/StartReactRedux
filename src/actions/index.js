@@ -2,19 +2,15 @@ export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST'
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS'
 
 export const fetchData = (delay, data) => (dispatch, getState) => {
-  const time = Date.now() // get current timestamp
+  const lastReqId = getState().lastReq.lastReqId + 1
 
-  // send current timestamp to redux store
   dispatch({
     type: FETCH_DATA_REQUEST,
-    time,
+    lastReqId,
   })
 
-  // simulate the response delay from the server
   setTimeout(() => {
-    const { lastReqTime } = getState().lastReq
-
-    if (time === lastReqTime) { // check if time is lastReqTime
+    if (lastReqId === getState().lastReq.lastReqId) {
       dispatch({
         type: FETCH_DATA_SUCCESS,
         data: data,

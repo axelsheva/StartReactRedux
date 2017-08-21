@@ -10,8 +10,8 @@ class Data extends Component {
     // Need setTimeout for delay between actions
     // otherwise all actions have equal timestamp
     fetchData(1000, 'First req')
-    setTimeout(() => fetchData(3000, 'Second req'), 0) // this request will come last
-    setTimeout(() => fetchData(2000, 'Last req'), 1) // this request needs to be saved
+    fetchData(3000, 'Second req') // this request will come last
+    fetchData(2000, 'Last req')  // this request needs to be saved
   }
 
   render() {

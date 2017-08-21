@@ -4,14 +4,14 @@ import {
 } from '../actions'
 
 const INITIAL_STATE = {
-  lastReqTime: 0,
+  lastReqId: 0,
   data: 'Default data',
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_DATA_REQUEST:
-      return { ...state, lastReqTime: action.time }
+      return { ...state, lastReqId: action.lastReqId }
     case FETCH_DATA_SUCCESS:
       return { ...state, data: action.data }
     default:
